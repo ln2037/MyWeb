@@ -1,6 +1,9 @@
 package myweb
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 //trie树的主结构
 type node struct {
@@ -54,7 +57,7 @@ func (nd *node) matchChild(part string) *node {
 	return nil
 }
 
-// 通过parts匹配对应的pattern, 就是个DFS
+// 通过parts匹配对应的pattern
 func (nd *node) search(parts []string, height int) *node {
 	if height == len(parts) || strings.HasPrefix(nd.part, "*") {
 		// 若pattern为""直接返回nil
@@ -78,6 +81,10 @@ func (nd *node) search(parts []string, height int) *node {
 		}
 	}
 	return nil
+}
+
+func (nd *node) String() string {
+	return fmt.Sprintf("node{pattern=%s, part=%s, isWild=%t}", nd.pattern, nd.part, nd.isWild)
 }
 
 // 通过part匹配多个child

@@ -57,7 +57,7 @@ func (context *Context) SetHeader(key, value string) {
 	context.Writer.Header().Set(key, value)
 }
 
-func (context *Context) String(code int, format string, values ...interface{}) {
+func (context *Context) 	String(code int, format string, values ...interface{}) {
 	context.SetHeader("Content-Type", "text/plain")
 	context.Status(code)
 	context.Writer.Write([]byte(fmt.Sprintf(format, values...)))
