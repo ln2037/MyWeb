@@ -93,5 +93,4 @@ func (rt *router) handle(context *Context) {
 	} else {
 		context.String(http.StatusNotFound,  "404 NOT FOUND: %s\n", context.Path)
 	}
-
 }
